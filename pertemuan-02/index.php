@@ -197,7 +197,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">HALO!</h5>
 
                 <p class="card-text">
                   Selamat Datang di Sistem Jadwal Guru pada SMA/SMK XYZ.
