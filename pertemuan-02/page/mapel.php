@@ -39,7 +39,7 @@ if (isset($_GET['action'])) {
                     <?php
                     $no = 0;
                     $query = mysqli_query($koneksi, "SELECT * FROM mapel");
-                    while ($data = mysqli_fetch_array($query)) {
+                    while ($result = mysqli_fetch_array($query)) {
                         $no++
                     ?>
                         <tbody>
