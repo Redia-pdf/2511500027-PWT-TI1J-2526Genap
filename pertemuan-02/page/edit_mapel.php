@@ -9,14 +9,14 @@
 </div>
 <?php
 $kd = $_GET['kd'];
-$edit = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM mapel WHERE kd_mapel='$kd'"));
+$edit = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM mapel WHERE kd_mapel='$kd' "));
 
 if(isset($_POST['tambah'])){
     $kd_mapel = $_POST['kd_mapel'];
     $nm_mapel = $_POST['nm_mapel'];
     $kkm = $_POST['kkm'];
 
-    $update = mysqli_query($koneksi, "UPDATE mapel SET nm_mapel='$nm_mapel', kkm='$kkm' WHERE kd_mapel='$kd_mapel'");
+    $insert = mysqli_query($koneksi, "UPDATE mapel SET nm_mapel='$nm_mapel', kkm='$kkm' WHERE kd_mapel='$kd_mapel'");
     if($insert) {
         echo '<div class="alert alert-info-dismissible">
         <button type="button" class="close" data-dismiss="alert" arial-hidden="true">X</button>
