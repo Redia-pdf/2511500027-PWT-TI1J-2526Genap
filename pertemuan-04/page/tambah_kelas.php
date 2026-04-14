@@ -15,8 +15,8 @@ if ($datakode) {
     $nilaikode = substr($datakode[0], 2);
     $kode = (int) $nilaikode;
     $kode = $kode + 1;
-    $hasilkode = "12-".str_pad($kode, 3, "0", STR_PAD_LEFT);
-} else {$hasilkode = "12-"; }
+    $hasilkode = "12".str_pad($kode, 3, "0", STR_PAD_LEFT);
+} else {$hasilkode = "12"; }
 $_SESSION["KODE"] = $hasilkode;
 
 if(isset($_POST['tambah'])){

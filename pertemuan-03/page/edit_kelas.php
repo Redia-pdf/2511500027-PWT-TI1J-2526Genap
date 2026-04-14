@@ -38,8 +38,8 @@ if(isset($_POST['tambah'])){
                         <form method="post" action="">
                             <div class="form-group">
                                 <label for="id_kelas">Kode Kelas</label>
-                                <input type="text" name="id_kelas" value="<?= $edit['id_kelas']; ?>" class="form-control" readonly>
-                            </div>                                              
+                                <input type="text" name="id_kelas" value="<?= $edit['id_kelas']; ?>" class="form-control">
+                            </div>                                             
                             <div class="form-group">
                                 <label for="nm_kelas">Nama Kelas</label>
                                 <input type="text" name="nm_kelas" value="<?= $edit['nm_kelas']; ?>" id="nm_kelas" placeholder="Nama Kelas" class="form-control">
