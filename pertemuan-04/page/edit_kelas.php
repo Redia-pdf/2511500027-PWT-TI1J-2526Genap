@@ -2,39 +2,31 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Data Kelas </h1>
+                <h1 class="m-0 text-dark">Edit Kelas </h1>
             </div>
         </div>
     </div>
 </div>
 <?php
-//kode otomatis//
-$carikode = mysqli_query($koneksi, "select max(id_kelas) from kelas") or die (mysqli_error($koneksi));
-$datakode = mysqli_fetch_array($carikode);
-if ($datakode) {
-    $nilaikode = substr($datakode[0], 2);
-    $kode = (int) $nilaikode;
-    $kode = $kode + 1;
-    $hasilkode = "12-".str_pad($kode, 3, "0", STR_PAD_LEFT);
-} else {$hasilkode = "12-"; }
-$_SESSION["KODE"] = $hasilkode;
+$kd = $_GET['kd'];
+$edit = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM kelas WHERE id_kelas='$kd' "));
 
 if(isset($_POST['tambah'])){
     $id_kelas = $_POST['id_kelas'];
     $nm_kelas = $_POST['nm_kelas'];
 
-    $insert = mysqli_query($koneksi, "INSERT INTO kelas values ('$id_kelas','$nm_kelas')");
+    $insert = mysqli_query($koneksi, "UPDATE kelas SET nm_kelas='$nm_kelas' WHERE id_kelas='$id_kelas'");
     if($insert) {
         echo '<div class="alert alert-info-dismissible">
         <button type="button" class="close" data-dismiss="alert" arial-hidden="true">X</button>
-        <h5><i class="icon fas fa-info"></i> Info</h5>
+        <h5><i class="icon fas fa-info"></i> Info </h5>
         <h4>Berhasil Disimpan</h4></div>';
         echo '<meta http-equiv="refresh" content="1;url=index.php?page=kelas">';
     }else{
         echo '<div class="alert alert-warning alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" arial-hidden="true">X</button>
         <h5><i class="icon fas fa-info"></i> Info </h5>
-        <h4>Gagal Disimpan</h4></div>';
+        <h4>Gagal Disimpan</h4></div';
     }
 }
     ?>
@@ -46,19 +38,19 @@ if(isset($_POST['tambah'])){
                         <form method="post" action="">
                             <div class="form-group">
                                 <label for="id_kelas">Kode Kelas</label>
-                                <input type="text" name="id_kelas" value="<?= $hasilkode; ?>" placeholder="Id Kelas" class="form-control" readonly>
-                            </div>
+                                <input type="text" name="id_kelas" value="<?= $edit['id_kelas']; ?>" class="form-control" readonly>
+                            </div>                                              
                             <div class="form-group">
                                 <label for="nm_kelas">Nama Kelas</label>
-                                <input type="text" name="nm_kelas" id="nm_kelas" placeholder="Nama Kelas" class="form-control" required>
+                                <input type="text" name="nm_kelas" value="<?= $edit['nm_kelas']; ?>" id="nm_kelas" placeholder="Nama Kelas" class="form-control">
                             </div>
                             <div class="card-footer">
-                                <input type="submit" class="btn btn-primary" name="tambah" value="simpan">
+                                <input type="submit" class="btn btn-primary" name="tambah" value="Simpan">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
     </section>
-    
+
