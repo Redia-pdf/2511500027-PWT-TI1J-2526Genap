@@ -4,4 +4,5 @@ NAMA : Redia Yuana Dinandika Tjandring<br>
 <br>
 <ol>
 <li>membuat CRUD Guru dan Siswa</li>
-<li>
+<li> membuat file guru.php</li>
+<li>membaut file tambah_guru.php</li>

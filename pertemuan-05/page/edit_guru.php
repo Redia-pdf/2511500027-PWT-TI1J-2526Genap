@@ -2,22 +2,14 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Data Guru </h1>
+                <h1 class="m-0 text-dark">Edit Guru </h1>
             </div>
         </div>
     </div>
 </div>
 <?php
-//kode otomatis//
-$carikode = mysqli_query($koneksi, "select max(kd_guru) from guru") or die (mysqli_error($koneksi));
-$datakode = mysqli_fetch_array($carikode);
-if ($datakode) {
-    $nilaikode = substr($datakode[0], 2);
-    $kode = (int) $nilaikode;
-    $kode = $kode + 1;
-    $hasilkode = "G-".str_pad($kode, 3, "0", STR_PAD_LEFT);
-} else {$hasilkode = "G-001"; }
-$_SESSION["KODE"] = $hasilkode;
+$kd = $_GET['kd'];
+$edit = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM guru WHERE kd_guru='$kd' "));
 
 if(isset($_POST['tambah'])){
     $kd_guru = $_POST['kd_guru'];
@@ -28,18 +20,18 @@ if(isset($_POST['tambah'])){
     $hp = $_POST['hp'];
     $alamat = $_POST['alamat'];
 
-    $insert = mysqli_query($koneksi, "INSERT INTO guru values ('$kd_guru','$id_user','$nm_guru','$jenkel','$pend_terakhir','$hp','$alamat')");
+    $insert = mysqli_query($koneksi, "UPDATE guru SET id_user='$id_user', nm_guru='$nm_guru', jenkel='$jenkel', pend_terakhir='$pend_terakhir', hp='$hp', alamat='$alamat' WHERE kd_guru='$kd_guru'");
     if($insert) {
         echo '<div class="alert alert-info-dismissible">
         <button type="button" class="close" data-dismiss="alert" arial-hidden="true">X</button>
-        <h5><i class="icon fas fa-info"></i> Info</h5>  
+        <h5><i class="icon fas fa-info"></i> Info </h5>
         <h4>Berhasil Disimpan</h4></div>';
         echo '<meta http-equiv="refresh" content="1;url=index.php?page=guru">';
     }else{
         echo '<div class="alert alert-warning alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" arial-hidden="true">X</button>
         <h5><i class="icon fas fa-info"></i> Info </h5>
-        <h4>Gagal Disimpan</h4></div>';
+        <h4>Gagal Disimpan</h4></div';
     }
 }
     ?>
@@ -51,43 +43,43 @@ if(isset($_POST['tambah'])){
                         <form method="post" action="">
                             <div class="form-group">
                                 <label for="kd_guru">Kode Guru</label>
-                                <input type="text" name="kd_guru" value="<?= $hasilkode; ?>" placeholder="Id Kat" class="form-control" readonly>
-                            </div>
+                                <input type="text" name="kd_guru" value="<?= $edit['kd_guru']; ?>" class="form-control" readonly>
+                            </div>                                              
                             <div class="form-group">
                                 <label for="id_user">ID User</label>
-                                <input type="text" name="id_user" id="id_user" placeholder="ID User" class="form-control">
+                                <input type="text" name="id_user" value="<?= $edit['id_user']; ?>" id="id_user" placeholder="ID User" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="nm_guru">Nama Guru</label>
-                                <input type="text" name="nm_guru" id="nm_guru" placeholder="Nama Guru" class="form-control">
-                            </div>  
+                                <input type="text" name="nm_guru" value="<?= $edit['nm_guru']; ?>" id="nm_guru" placeholder="Nama Guru" class="form-control">
+                            </div>
                             <div class="form-group">
                                 <label for="jenkel">Jenis Kelamin</label>
                                 <select name="jenkel" id="jenkel" class="form-control">
                                     <option value="">Pilih Jenis Kelamin</option>
-                                    <option value="Laki-laki">Laki-laki</option>
-                                    <option value="Perempuan">Perempuan</option>
+                                    <option value="Laki-laki" <?= ($edit['jenkel'] == 'Laki-laki') ? 'selected' : ''; ?>>Laki-laki</option>
+                                    <option value="Perempuan" <?= ($edit['jenkel'] == 'Perempuan') ? 'selected' : ''; ?>>Perempuan</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="pend_terakhir">Pendidikan Terakhir</label>
-                                <input type="text" name="pend_terakhir" id="pend_terakhir" placeholder="Pendidikan Terakhir" class="form-control">
+                                <input type="text" name="pend_terakhir" value="<?= $edit['pend_terakhir']; ?>" id="pend_terakhir" placeholder="Pendidikan Terakhir" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="hp">No HP</label>
-                                <input type="text" name="hp" id="hp" placeholder="No HP" class="form-control">
+                                <input type="text" name="hp" value="<?= $edit['hp']; ?>" id="hp" placeholder="No HP" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="alamat">Alamat</label>
-                                <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-control"></textarea>
+                                <textarea name="alamat" id="alamat" placeholder="Alamat" class="form-control"><?= $edit['alamat']; ?></textarea>
                             </div>
                             <div class="card-footer">
-                                <input type="submit" class="btn btn-primary" name="tambah" value="simpan">
+                                <input type="submit" class="btn btn-primary" name="tambah" value="Simpan">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
     </section>
-    
+
