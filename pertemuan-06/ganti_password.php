@@ -63,13 +63,17 @@ if (isset($_POST['ganti'])) {
 
       <form method="post">
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password Baru">
+          <input type="password" name="password" id="password" class="form-control" placeholder="Password Baru">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
+            <div class="input-group-text">
+              <span id="toggle-password" class="fas fa-eye" style="cursor: pointer;"></span>
+            </div>
           </div>
         </div>
+        <div id="password-error" class="text-danger" style="display: none;">Password minimal 8 karakter</div>
 
         <div class="row">
           <div class="col-12">
@@ -88,6 +92,39 @@ if (isset($_POST['ganti'])) {
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#password').on('input', function() {
+        var password = $(this).val();
+        if (password.length < 8) {
+            $('#password-error').show();
+        } else {
+            $('#password-error').hide();
+        }
+    });
+
+    $('form').on('submit', function(e) {
+        var password = $('#password').val();
+        if (password.length < 8) {
+            e.preventDefault();
+            $('#password-error').show();
+        }
+    });
+
+    $('#toggle-password').on('click', function() {
+        var passwordInput = $('#password');
+        var icon = $(this);
+        if (passwordInput.attr('type') === 'password') {
+            passwordInput.attr('type', 'text');
+            icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+            passwordInput.attr('type', 'password');
+            icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+    });
+});
+</script>
 
 </body>
 </html>
