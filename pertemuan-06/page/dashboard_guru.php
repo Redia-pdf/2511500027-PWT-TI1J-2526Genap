@@ -2,14 +2,14 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Dashboard Siswa</h1>
+                <h1 class="m-0 text-dark">Dashboard Guru</h1>
             </div>
         </div>
     </div>
 </div>
 <?php
-$nis = $_SESSION['username'];
-$query = mysqli_query($koneksi, "SELECT * FROM siswa WHERE nis='$nis'");
+$kd_guru = $_SESSION['username'];
+$query = mysqli_query($koneksi, "SELECT * FROM guru WHERE kd_guru='$kd_guru'");
 $data = mysqli_fetch_array($query);
 ?>          
 
@@ -17,8 +17,8 @@ $data = mysqli_fetch_array($query);
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title-bold">HALO, <?= $data['nm_siswa']; ?> </h5>
-                <p class="card-text">
+                <h5 class="card-title-extra-bold mb-1">HALO, <?= $data['nm_guru']; ?> </h5>
+                <p class="card-text mb-1">
                     <?php
                     date_default_timezone_set('Asia/Jakarta');
                     $jam = date('H:i');
@@ -31,11 +31,9 @@ $data = mysqli_fetch_array($query);
                     } else {
                         echo "Selamat Malam";
                     }
-                    ?>, Selamat Datang di Website Sekolah. Semoga harimu menyenangkan!
+                    ?>, dan Selamat Datang, Bapak/Ibu Guru Semoga Hari Mengajar Anda Menyenangkan!!
                 </p>
             </div>
         </div>
     </div>
 </div>          
-
-

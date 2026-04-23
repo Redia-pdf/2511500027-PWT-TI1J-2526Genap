@@ -42,7 +42,7 @@ $data = mysqli_fetch_array($query);
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="siswa_index.php" class="nav-link">home</a>
+                    <a href="guru_index.php" class="nav-link">home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -196,8 +196,6 @@ $data = mysqli_fetch_array($query);
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">HALO, <?= $data['nm_guru']; ?> </h5>
-
                                     <p class="card-text">
                                         <?php
                                         if (isset($_GET['page'])) {
@@ -206,7 +204,7 @@ $data = mysqli_fetch_array($query);
                                             $page = "";
                                         }
                                         if ($page == "") {
-                                            include "page/dashboard.php";
+                                            include "page/dashboard_guru.php";
                                         } elseif (!file_exists("page/$page.php")) {
                                             echo "File Tidak Ditemukan";
                                         } else {

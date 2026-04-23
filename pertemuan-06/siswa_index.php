@@ -200,8 +200,6 @@
               <div class="col-lg-12">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">HALO, <?= $data['nm_siswa']; ?> </h5>
-
                     <p class="card-text">
                       <?php
                       if (isset($_GET['page'])) {
@@ -210,7 +208,7 @@
                         $page = "";
                       }
                       if ($page == "") {
-                        include "page/dashboard.php";
+                        include "page/dashboard_siswa.php";
                       } elseif (!file_exists("page/$page.php")) {
                         echo "File Tidak Ditemukan";
                       } else {
