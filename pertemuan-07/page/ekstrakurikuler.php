@@ -55,8 +55,8 @@ if (isset($_GET['action'])) {
                                 <td><?= $no; ?></td>
                                 <td><?= $result['kd_ekskul']; ?></td>
                                 <td><?= $result['nm_ekskul']; ?></td>
-                                <td><?= $result['pembimbing1']; ?></td>
-                                <td><?= $result['pembimbing2']; ?></td>
+                                <td><?= $result['pembimbing1'] ?: '-'; ?></td>
+                                <td><?= $result['pembimbing2'] ?: '-'; ?></td>
                                 <td>
                                     <a href="index.php?page=ekstrakurikuler&action=hapus&kd=<?= $result['kd_ekskul']
                                                                                     ?>" title="">

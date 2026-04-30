@@ -14,8 +14,8 @@ $edit = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM ektrakurikuler 
 if (isset($_POST['tambah'])) {
     $kd_ekskul = $_POST['kd_ekskul'];
     $nm_ekskul = $_POST['nm_ekskul'];
-    $pembimbing_1 = $_POST['pembimbing_1'];
-    $pembimbing_2 = $_POST['pembimbing_2'];
+    $pembimbing_1 = $_POST['pembimbing_1']?: '-';
+    $pembimbing_2 = $_POST['pembimbing_2']?: '-';
 
     $insert = mysqli_query($koneksi, "UPDATE ektrakurikuler SET nm_ekskul='$nm_ekskul', pembimbing_1='$pembimbing_1', pembimbing_2='$pembimbing_2' WHERE kd_ekskul='$kd_ekskul'");
     if ($insert) {
@@ -48,11 +48,29 @@ if (isset($_POST['tambah'])) {
                         </div>
                         <div class="form-group">
                             <label for="pembimbing_1">Pembimbing 1</label>
-                            <input type="text" name="pembimbing_1" value="<?= $edit['pembimbing_1']; ?>" id="pembimbing_1" placeholder="Pembimbing 1" class="form-control">
+                            <select class="form-control" name="pembimbing_1" required>
+                                <option value="">--Pilih Pembimbing 1--</option>
+                                <?php
+                                $getguru = mysqli_query($koneksi, "SELECT * FROM guru");
+                                while ($returnguru = mysqli_fetch_array($getguru)) {
+                                ?>
+                                    <option value="<?= $returnguru['kd_guru']; ?>" <?= ($edit['pembimbing_1'] == $returnguru['kd_guru']) ? 'selected' : ''; ?>><?= $returnguru['nm_guru']; ?></option>
+                                <?php } ?>
+                                <option value="">-</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="pembimbing_2">Pembimbing 2</label>
-                            <input type="text" name="pembimbing_2" value="<?= $edit['pembimbing_2']; ?>" id="pembimbing_2" placeholder="Pembimbing 2" class="form-control">
+                            <select class="form-control" name="pembimbing_2" required>
+                                <option value="">--Pilih Pembimbing 2--</option>
+                                <?php
+                                $getguru = mysqli_query($koneksi, "SELECT * FROM guru");
+                                while ($returnguru = mysqli_fetch_array($getguru)) {
+                                ?>
+                                    <option value="<?= $returnguru['kd_guru']; ?>" <?= ($edit['pembimbing_2'] == $returnguru['kd_guru']) ? 'selected' : ''; ?>><?= $returnguru['nm_guru']; ?></option>
+                                <?php } ?>
+                                <option value="">-</option>
+                            </select>
                         </div>
                         <div class="card-footer">
                             <input type="submit" class="btn btn-primary" name="tambah" value="Simpan">

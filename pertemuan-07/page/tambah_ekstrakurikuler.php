@@ -15,16 +15,17 @@ if ($datakode) {
     $nilaikode = substr($datakode[0], 2);
     $kode = (int) $nilaikode;
     $kode = $kode + 1;
-    $hasilkode = "E-".str_pad($kode, 3, "0", STR_PAD_LEFT);
+    $hasilkode = "E-" . str_pad($kode, 3, "0", STR_PAD_LEFT);
 } else {
-    $hasilkode = "E-";}
-    $_SESSION["KODE"] = $hasilkode;
+    $hasilkode = "E-";
+}
+$_SESSION["KODE"] = $hasilkode;
 
 if (isset($_POST['tambah'])) {
     $kd_ekskul = $_POST['kd_ekskul'];
     $nm_ekskul = $_POST['nm_ekskul'];
-    $pembimbing_1 = $_POST['pembimbing_1'];
-    $pembimbing_2 = $_POST['pembimbing_2'];
+    $pembimbing_1 = $_POST['pembimbing_1']?: '-';
+    $pembimbing_2 = $_POST['pembimbing_2']?: '-';
 
     $insert = mysqli_query($koneksi, "INSERT INTO ektrakurikuler values ('$kd_ekskul','$nm_ekskul','$pembimbing_1','$pembimbing_2')");
     if ($insert) {
@@ -57,11 +58,29 @@ if (isset($_POST['tambah'])) {
                         </div>
                         <div class="form-group">
                             <label for="pembimbing_1">Pembimbing 1</label>
-                            <input type="text" name="pembimbing_1" id="pembimbing_1" placeholder="Pembimbing 1" class="form-control" required> 
+                            <select class="form-control" name="pembimbing_1" required>
+                                <option value="">--Pilih Pembimbing 1--</option>
+                                <?php
+                                $getguru = mysqli_query($koneksi, "SELECT * FROM guru");
+                                while ($returnguru = mysqli_fetch_array($getguru)) {
+                                ?>
+                                    <option value="<?= $returnguru['kd_guru']; ?>"><?= $returnguru['nm_guru']; ?></option>
+                                    <option value="">-</option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="pembimbing_2">Pembimbing 2</label>
-                            <input type="text" name="pembimbing_2" id="pembimbing_2" placeholder="Pembimbing 2" class="form-control" required>
+                            <select class="form-control" name="pembimbing_2" required>
+                                <option value="">--Pilih Pembimbing 2--</option>
+                                <?php
+                                $getguru = mysqli_query($koneksi, "SELECT * FROM guru");
+                                while ($returnguru = mysqli_fetch_array($getguru)) {
+                                ?>
+                                    <option value="<?= $returnguru['kd_guru']; ?>"><?= $returnguru['nm_guru']; ?></option>
+                                    <option value="">-</option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <div class="card-footer">
                             <input type="submit" class="btn btn-primary" name="tambah" value="simpan">
