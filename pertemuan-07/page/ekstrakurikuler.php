@@ -7,12 +7,12 @@
         </div>
     </div>
 </div>
-
 <?php
+
 if (isset($_GET['action'])) {
     if ($_GET['action'] == "hapus") {
         $kd = $_GET['kd'];
-        $query = mysqli_query($koneksi, "DELETE FROM ekstrakurikuler WHERE kd_ekskul='$kd'");
+        $query = mysqli_query($koneksi, "DELETE FROM ektrakurikuler WHERE kd_ekskul='$kd'");
         if ($query) {
             echo '<div class="alert alert-warning alert-dismissible">
     Berhasil dihapus!</div>';
@@ -39,9 +39,9 @@ if (isset($_GET['action'])) {
                     </tread>
                     <?php
                     $no = 0;
-                    $query = mysqli_query($koneksi, "SELECT * FROM ekstrakurikuler");
+                    $query = mysqli_query($koneksi, "SELECT * FROM ektrakurikuler");
                     while ($result = mysqli_fetch_array($query)) {
-                        $no++;
+                        $no++
                         ?>
                         <tbody>
                             <tr>
