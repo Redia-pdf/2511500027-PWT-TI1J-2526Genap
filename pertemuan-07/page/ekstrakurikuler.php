@@ -39,7 +39,14 @@ if (isset($_GET['action'])) {
                     </tread>
                     <?php
                     $no = 0;
-                    $query = mysqli_query($koneksi, "SELECT * FROM ektrakurikuler");
+                    $query= mysqli_query($koneksi, "SELECT 
+                        ektrakurikuler.*,
+                        g1.nm_guru AS pembimbing1,
+                        g2.nm_guru AS pembimbing2
+                    FROM ektrakurikuler
+                    LEFT JOIN guru g1 ON ektrakurikuler.pembimbing_1 = g1.kd_guru
+                    LEFT JOIN guru g2 ON ektrakurikuler.pembimbing_2 = g2.kd_guru
+                    ");
                     while ($result = mysqli_fetch_array($query)) {
                         $no++
                         ?>
@@ -48,8 +55,8 @@ if (isset($_GET['action'])) {
                                 <td><?= $no; ?></td>
                                 <td><?= $result['kd_ekskul']; ?></td>
                                 <td><?= $result['nm_ekskul']; ?></td>
-                                <td><?= $result['pembimbing_1']; ?></td>
-                                <td><?= $result['pembimbing_2']; ?></td>
+                                <td><?= $result['pembimbing1']; ?></td>
+                                <td><?= $result['pembimbing2']; ?></td>
                                 <td>
                                     <a href="index.php?page=ekstrakurikuler&action=hapus&kd=<?= $result['kd_ekskul']
                                                                                     ?>" title="">
