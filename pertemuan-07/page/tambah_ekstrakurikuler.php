@@ -65,8 +65,8 @@ if (isset($_POST['tambah'])) {
                                 while ($returnguru = mysqli_fetch_array($getguru)) {
                                 ?>
                                     <option value="<?= $returnguru['kd_guru']; ?>"><?= $returnguru['nm_guru']; ?></option>
-                                    <option value="">-</option>
                                 <?php } ?>
+                                   <option value="">-</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -78,8 +78,8 @@ if (isset($_POST['tambah'])) {
                                 while ($returnguru = mysqli_fetch_array($getguru)) {
                                 ?>
                                     <option value="<?= $returnguru['kd_guru']; ?>"><?= $returnguru['nm_guru']; ?></option>
-                                    <option value="">-</option>
                                 <?php } ?>
+                                   <option value="">-</option>
                             </select>
                         </div>
                         <div class="card-footer">
@@ -90,4 +90,4 @@ if (isset($_POST['tambah'])) {
             </div>
         </div>
     </div>
-</section>
+</section>  

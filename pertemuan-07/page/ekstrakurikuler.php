@@ -50,14 +50,14 @@ if (isset($_GET['action'])) {
                     while ($result = mysqli_fetch_array($query)) {
                         $no++
                         ?>
-                        <tbody>
-                            <tr>
-                                <td><?= $no; ?></td>
-                                <td><?= $result['kd_ekskul']; ?></td>
-                                <td><?= $result['nm_ekskul']; ?></td>
-                                <td><?= $result['pembimbing1'] ?: '-'; ?></td>
-                                <td><?= $result['pembimbing2'] ?: '-'; ?></td>
-                                <td>
+                            <tbody>
+                                <tr>
+                                    <td><?= $no; ?></td>
+                                    <td><?= $result['kd_ekskul']; ?></td>
+                                    <td><?= $result['nm_ekskul']; ?></td>
+                                    <td><?= $result['pembimbing1'] ?: '-'; ?></td>
+                                    <td><?= $result['pembimbing2'] ?: '-'; ?></td>
+                                    <td>
                                     <a href="index.php?page=ekstrakurikuler&action=hapus&kd=<?= $result['kd_ekskul']
                                                                                     ?>" title="">
                                         <span class="badge badge-danger">Hapus</span>
