@@ -1,4 +1,4 @@
-<div class="content-header">
+`<div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
@@ -51,7 +51,7 @@ if (isset($_GET['action'])) {
                                 <td><?= $result['judul_skripsi_027']; ?></td>
                                 <td><?= $result['topik_skripsi_027']; ?></td>
                                 <td><?= $result['semester_027']; ?></td>
-                                <td><?= $result['tahun_ajaran_027']; ?></td>
+                                <td><?= $result['thn_ajaran_027']; ?></td>
                                 <td>
                                     <a href="index.php?page=skripsi_2511500027&action=hapus&kd=<?= $result['id_skripsi_027'] ?>" title="">
                                         <span class="badge badge-danger">Hapus</span>
@@ -66,4 +66,4 @@ if (isset($_GET['action'])) {
                 </table>
             </div>
         </div>
-    </div>
+    </div>`
