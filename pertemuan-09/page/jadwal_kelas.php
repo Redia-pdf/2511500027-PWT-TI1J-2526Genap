@@ -11,7 +11,7 @@
 <?php
 if (isset($_GET['action'])) {
     if ($_GET['action'] == "hapus") {
-        $kd = $_GET['kd'];
+        $kd = $_GET['id_jadwal'];
         $query = mysqli_query($koneksi, "DELETE FROM jadwal_kelas WHERE id_jadwal='$kd'");
         if ($query) {
             echo '<div class="alert alert-warning alert-dismissible">
@@ -48,13 +48,13 @@ if (isset($_GET['action'])) {
                                 <td><?= $no; ?></td>
                                 <td><?= $result['id_jadwal']; ?></td>
                                 <td><?= $result['nm_kelas']; ?></td>
-                                <td><?= $result['tahun_ajaran']; ?></td>
+                                <td><?= $result['thn_ajaran']; ?></td>
                                 <td><?= $result['semester']; ?></td>
                                 <td>
-                                    <a href="index.php?page=jadwal_kelas&action=hapus&kd=<?= $result['id_jadwal'] ?>" title="">
+                                    <a href="index.php?page=jadwal_kelas&action=hapus&id_jadwal=<?= $result['id_jadwal'] ?>" title="">
                                         <span class="badge badge-danger">Hapus</span>
                                     </a>
-                                    <a href="index.php?page=detail_jadwal_kelas&kd=<?= $result['id_jadwal'] ?>" title="">
+                                    <a href="index.php?page=detail_jadwal&id_jadwal=<?= $result['id_jadwal']; ?>">
                                         <span class="badge badge-success">Detail</span>
                                     </a>
                                 </td>
