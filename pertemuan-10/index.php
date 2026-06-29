@@ -140,6 +140,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <p>kelas</p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="index.php?page=skripsi_2511500027" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Skripsi</p>
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-item">
