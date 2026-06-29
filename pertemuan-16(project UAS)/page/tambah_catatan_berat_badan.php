@@ -102,8 +102,7 @@ if(!$insert){
                     function HapusBaris(btn) {
                         let container = document.getElementById('detail-asi');
                         // Minimal harus tersisa satu baris
-                        if (container.children.length > 1) {
-                            btn.closest('.row').remove();
+                        if (container.children.length > 1) { btn.closest('.row').remove();
                         } else {
                             alert("Minimal harus ada satu detail pemberian ASI.");
                         }
