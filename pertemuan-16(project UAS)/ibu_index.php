@@ -10,11 +10,7 @@
               // ambil data ibu
               $username = $_SESSION['username'];
 
-              $query = mysqli_query($koneksi, "
-                SELECT * FROM ibu
-                WHERE id_ibu='$username'
-              ");
-
+              $query = mysqli_query($koneksi, " SELECT * FROM ibu WHERE id_ibu='$username'");
               $data = mysqli_fetch_array($query);
               ?>
                 <!DOCTYPE html>
@@ -247,7 +243,7 @@
                             </div><!-- /.col -->
                             <div class="col-sm-6">
                               <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="ibu_index.php">Dashboard</a></li>
                                 <li class="breadcrumb-item active">Halaman Sistem</li>
                               </ol>
                             </div><!-- /.col -->

@@ -68,12 +68,7 @@ session_start();
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo text-center">
-    <img src="dist/img/POSYANDU1.png" alt="Logo Posyandu" class="logo-login"  style="filter: brightness(0) saturate(100%)
-            invert(24%) sepia(95%)
-            saturate(2255%)
-            hue-rotate(315deg)
-            brightness(99%)
-            contrast(105%);">
+    <img src="dist/img/POSYANDU1.png" alt="Logo Posyandu" class="logo-login"  style="filter: brightness(0) saturate(100%) invert(24%) sepia(95%) saturate(2255%) hue-rotate(315deg) brightness(99%) contrast(105%);">
     <br>
     <a href="#" style="color:#e91e63;" style="font-size: 50px; font-weight: bold;">
         <b>Sistem Pemantauan ASI</b>
