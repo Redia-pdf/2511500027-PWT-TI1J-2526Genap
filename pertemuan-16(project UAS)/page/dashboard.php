@@ -78,7 +78,8 @@ $pemantauan = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) AS tota
                         $no = 1;
                         $aktivitas = mysqli_query($koneksi, " SELECT pa.id_asi AS kode, b.nm_bayi, dpa.tanggal_pengisian AS tanggal, 'pemberian asi' AS aktivitas
                         FROM pemberian_asi pa JOIN bayi b ON pa.id_bayi = b.id_bayi JOIN detail_pemberian_asi dpa ON pa.id_asi = dpa.id_asi UNION ALL
-                        SELECT pb.id_pemantauan AS kode,b.nm_bayi, dpb.tanggal_pantau AS tanggal,'pemantauan berat badan' AS aktivitas FROM pemantauan_berat_badan pb JOIN bayi b ON pb.id_bayi = b.id_bayi JOIN detail_pemantauan_berat_badan dpb ON pb.id_pemantauan = dpb.id_pemantauan
+                        SELECT pb.id_pemantauan AS kode,b.nm_bayi, dpb.tanggal_pantau AS tanggal,
+                        'pemantauan berat badan' AS aktivitas FROM pemantauan_berat_badan pb JOIN bayi b ON pb.id_bayi = b.id_bayi JOIN detail_pemantauan_berat_badan dpb ON pb.id_pemantauan = dpb.id_pemantauan
                         ORDER BY tanggal DESC LIMIT 5") or die(mysqli_error($koneksi));
                         while($a=mysqli_fetch_array($aktivitas)){
                         ?>

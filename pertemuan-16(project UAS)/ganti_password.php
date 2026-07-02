@@ -26,7 +26,7 @@
             } elseif ($role == 'ibu') {
                 header("Location: ibu_index.php");
             }
-            exit;
+            exit;   
         }
     }
     ?>

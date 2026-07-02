@@ -60,30 +60,15 @@ if (isset($_GET['hapus'])) {
 
                         <?php
 
-                        $query = mysqli_query($koneksi, "
-                            SELECT *
-                            FROM pemberian_asi pa
-                            JOIN bayi b
-                            ON pa.id_bayi=b.id_bayi
-                        ");
-
+                        $query = mysqli_query($koneksi, " SELECT * FROM pemberian_asi pa JOIN bayi b ON pa.id_bayi=b.id_bayi");
                         while ($row = mysqli_fetch_assoc($query)) {
 
                             echo "<tr>
-
                                 <td>{$row['id_asi']}</td>
-
                                 <td>{$row['nm_bayi']}</td>
-
                                 <td>
                                     <ul>";
-
-                            $detail = mysqli_query($koneksi, "
-                                SELECT *
-                                FROM detail_pemberian_asi
-                                WHERE id_asi='{$row['id_asi']}'
-                                ORDER BY tanggal_pengisian
-                            ");
+                            $detail = mysqli_query($koneksi, " SELECT * FROM detail_pemberian_asi WHERE id_asi='{$row['id_asi']}' ORDER BY tanggal_pengisian");
 
                             while ($d = mysqli_fetch_assoc($detail)) {
                                 $tgl = date('d-m-Y', strtotime($d['tanggal_pengisian']));
@@ -94,20 +79,18 @@ if (isset($_GET['hapus'])) {
                                </td>
                                    <td>
                                     <a href='index.php?page=edit_asi&id={$row['id_asi']}'
-           class='btn btn-warning btn-sm'>
-           Edit
-        </a>
+                                     class='btn btn-warning btn-sm'>Edit</a>
 
-        <a href='index.php?page=asi&hapus={$row['id_asi']}'
-           onclick='return confirm(\"Yakin ingin menghapus data?\")'
-           class='btn btn-danger btn-sm'>
-           Hapus
-        </a>
+                                    <a href='index.php?page=asi&hapus={$row['id_asi']}'
+                                    onclick='return confirm(\"Yakin ingin menghapus data?\")'
+                                    class='btn btn-danger btn-sm'>
+                                    Hapus
+                                    </a>
 
-    </td>
+                                </td>
 
-</tr>";
-                        }
+                            </tr>";
+                         }
                         ?>
                     </tbody>
                 </table>

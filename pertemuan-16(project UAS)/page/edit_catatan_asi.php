@@ -26,16 +26,8 @@ if(mysqli_num_rows($cek)==0){
     $jumlah  = $_POST['jumlah_pemberian'];
     for ($i = 0; $i < count($tanggal); $i++) {
         if ($tanggal[$i] != "" && $jumlah[$i] != "") {
-            mysqli_query($koneksi, "
-            INSERT INTO detail_pemberian_asi
-            (id_asi,tanggal_pengisian,jumlah_pemberian)
-            VALUES
-            (
-                '$id_asi',
-                '{$tanggal[$i]}',
-                '{$jumlah[$i]}'
-            )
-            ");
+            mysqli_query($koneksi, " INSERT INTO detail_pemberian_asi (id_asi,tanggal_pengisian,jumlah_pemberian) VALUES
+            ('$id_asi', '{$tanggal[$i]}', '{$jumlah[$i]}') ");
         }
     }
     echo "<div class='alert alert-success'>
